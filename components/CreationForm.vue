@@ -1,5 +1,5 @@
 <template>
-  <form class="creation-form" action="">
+  <form class="creation-form" @submit.prevent="addNewProduct({ title, description, imgUrl, price })">
 
     <!-- Наименование товара -->
     <FormField v-model="title" title="Наименование товара" placeholder="Введите наименование товара" required
@@ -18,9 +18,8 @@
     <FormField v-model="price" title="Цена товара" placeholder="Введите цену" required :error="errs.price"></FormField>
 
     <!-- Кнопка: Добавить -->
-    <button @click="addNewProduct({ title, description, imgUrl, price })" class="creation-form__submit"
-      :disabled="(errs['title'] == '' && errs['imgUrl'] == '' && errs['price'] == '') ? false : true">Добавить
-      товар</button>
+    <input type="submit" class="creation-form__submit" value="Добавить товар"
+      :disabled="(errs['title'] == '' && errs['imgUrl'] == '' && errs['price'] == '') ? false : true">
   </form>
 </template>
 
