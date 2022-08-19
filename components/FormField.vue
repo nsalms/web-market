@@ -2,14 +2,14 @@
   <div class="form-field">
 
     <!-- Текстовая этикетка + "звёздочка" обязательного поля -->
-    <label class="form-field__label" for="text-field">{{ title }}</label><span v-if="required"
+    <label class="form-field__label" :for="title">{{ title }}</label><span v-if="required"
       class="form-field__label__dot"></span>
 
     <!-- Выбор inputType или textareaType в зависимости от типа поля -->
     <input class="form-field__input" :class="!error ? '' : 'form-field__input-error'" v-if="type == 'inputType'" @input="$emit('input', $event.target.value)" type="text"
-      name="" id="text-field" :placeholder="placeholder" :required="required">
+      name="" :id="title" :placeholder="placeholder" :required="required">
     <textarea class="form-field__input" :class="!error ? '' : 'form-field__input-error'" v-if="type == 'textareaType'" @input="$emit('input', $event.target.value)"
-      id="text-field" :placeholder="placeholder" rows="6"></textarea>
+      :id="title" :placeholder="placeholder" rows="6"></textarea>
 
     <!-- Бейдж ошибки -->
     <span class="form-field__message_error" :style="{ visibility: error ? 'visible' : 'hidden' }">{{ error ? error :
@@ -65,6 +65,10 @@ export default {
     box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
     border-radius: 4px;
 
+      &::placeholder { 
+        color: $mute-color;
+      }
+
     &-error {
       color: $secondary-color !important;;
       border-color: $secondary-color !important;
@@ -72,10 +76,16 @@ export default {
 
     &:hover {
       border: 1px solid rgba(0, 0, 0, 0.1);
+
+      
     }
 
     &:focus {
       border: 1px solid rgba(0, 0, 0, 0.2);
+
+      &::placeholder { 
+        color: inherit;
+      }
     }
   }
 
