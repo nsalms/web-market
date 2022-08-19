@@ -120,6 +120,11 @@ export default {
     box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
     border-radius: 10px;
     z-index: 999;
+
+    &:hover {
+      background: darken($secondary-color, 5%);
+      box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
+    }
   }
 }
 
