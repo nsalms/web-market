@@ -1,14 +1,17 @@
 <template>
-  <div class="product-card">
+  <div class="product-card-wrapper">
+    <div class="product-card">
 
-    <!-- Картинка -->
-    <img class="product-card__img" :src="imgUrl" alt="Красивая картинка">
+      <!-- Картинка -->
+      <img class="product-card__img" :src="imgUrl" alt="Красивая картинка"
+        @error="$event.target.src = 'https://i.imgur.com/3WhjP6O.png'">
 
-    <!-- Полное описание -->
-    <div class="product-card__sub">
-      <h5 class="product-card__title">{{ title }}</h5>
-      <div class="product-card__description">{{ description }}</div>
-      <div class="product-card__price">{{ price + " руб." }}</div>
+      <!-- Полное описание -->
+      <div class="product-card__sub">
+        <h5 class="product-card__title">{{ title }}</h5>
+        <div class="product-card__description">{{ description }}</div>
+        <div class="product-card__price">{{ price + " руб." }}</div>
+      </div>
     </div>
 
     <!-- Кнопка удаления -->
@@ -57,12 +60,13 @@ export default {
 
 <style lang="scss" scoped>
 .product-card {
-  position: relative;
+
   background: $body-color;
   box-shadow: 0px 20px 30px rgba(0, 0, 0, 0.04), 0px 6px 10px rgba(0, 0, 0, 0.02);
   border-radius: 4px;
   margin-bottom: 1rem;
   cursor: pointer;
+  overflow: hidden;
 
   &__img {
     width: 100%;
@@ -101,26 +105,30 @@ export default {
   }
 
   &__btn_delete {
-  transition: all 0.1s ease;
-  outline: none;
-  border: 0;
-  transform: scale(0);
-  cursor: pointer;
-  opacity: 0;
-  position: absolute;
-  top: -0.5rem;
-  right: -0.5rem;
-  padding: 0.5rem;
-  line-height: 0;
-  background: $secondary-color;
-  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
-  border-radius: 10px;
+    transition: all 0.1s ease;
+    outline: none;
+    border: 0;
+    transform: scale(0);
+    cursor: pointer;
+    opacity: 0;
+    position: absolute;
+    top: -0.5rem;
+    right: -0.5rem;
+    padding: 0.5rem;
+    line-height: 0;
+    background: $secondary-color;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    z-index: 999;
+  }
 }
 
-  &:hover .product-card__btn_delete {
+.product-card-wrapper {
+  position: relative;
+
+    &:hover .product-card__btn_delete {
     opacity: 1;
     transform: scale(1);
   }
 }
-
 </style>
