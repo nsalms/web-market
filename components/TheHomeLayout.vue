@@ -10,10 +10,12 @@
     <!-- Main column -->
     <div id="main" class="col-lg-9 col-md-8 col-sm-8 col-xs-12">
       <transition-group name="row" tag="div" class="row">
-        <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12" v-for="productData in getAllProducts" :key="productData.id">
-          <ProductCard :id="productData.id" :imgUrl="productData.imgUrl" :title="productData.title"
-            :description="productData.description" :price="productData.price"></ProductCard>
-        </div>
+        <client-only>
+          <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12" v-for="productData in getAllProducts" :key="productData.id">
+            <ProductCard :id="productData.id" :imgUrl="productData.imgUrl" :title="productData.title"
+              :description="productData.description" :price="productData.price"></ProductCard>
+          </div>
+        </client-only>
       </transition-group>
     </div>
   </div>
