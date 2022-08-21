@@ -26,5 +26,6 @@
     "push-dir": "^0.4.1",
     "sass": "^1.54.4",
     "sass-loader": "^10.1.1"
-  }
+  },
+  "browserslist": "cover 99.5%"
 }
