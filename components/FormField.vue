@@ -6,9 +6,8 @@
       class="form-field__label__dot"></span>
 
     <!-- Выбор inputType или textareaType в зависимости от типа поля -->
-    <input class="form-field__input" :class="!error ? '' : 'form-field__input-error'" v-if="type == 'inputType'" type="text"
-      v-on="inputListeners" :value="value" :id="title" :placeholder="placeholder"
-      :required="required">
+    <input class="form-field__input" :class="!error ? '' : 'form-field__input-error'" v-if="type == 'inputType'"
+      type="text" v-on="inputListeners" :value="value" :id="title" :placeholder="placeholder" :required="required">
     <textarea class="form-field__input" :class="!error ? '' : 'form-field__input-error'" v-if="type == 'textareaType'"
       v-on="inputListeners" :id="title" :placeholder="placeholder" rows="6"></textarea>
 
@@ -111,6 +110,9 @@ export default {
   &__message_error {
     font-size: 0.5rem;
     color: $secondary-color;
+    display: block;
+    margin-top: 4px;
+    margin-bottom: 2px;
   }
 }
 </style>

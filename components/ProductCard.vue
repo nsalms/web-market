@@ -72,6 +72,7 @@ export default {
     width: 100%;
     height: 200px;
     object-fit: cover;
+    display: block;
   }
 
   &__sub {
@@ -99,7 +100,7 @@ export default {
 
   &__price {
     margin-top: 2rem;
-    margin-bottom: 1.5rem;
+    margin-bottom: 0.5rem;
     font-size: 1.5rem;
     font-weight: 600;
   }
