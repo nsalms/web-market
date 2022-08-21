@@ -50,4 +50,8 @@ export default {
     transform: translateY(2rem);
   }
 }
+
+.sidebar {
+  padding-bottom: 1rem;
+}
 </style>
