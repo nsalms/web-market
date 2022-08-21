@@ -10,7 +10,7 @@
       <div class="product-card__sub">
         <h5 class="product-card__title">{{ title }}</h5>
         <div class="product-card__description">{{ description }}</div>
-        <div class="product-card__price">{{ price + " руб." }}</div>
+        <div class="product-card__price">{{ price.toLocaleString() + " руб." }}</div>
       </div>
     </div>
 

@@ -6,10 +6,11 @@
       class="form-field__label__dot"></span>
 
     <!-- Выбор inputType или textareaType в зависимости от типа поля -->
-    <input class="form-field__input" :class="!error ? '' : 'form-field__input-error'" v-if="type == 'inputType'" @input="$emit('input', $event.target.value)" type="text"
-      name="" :id="title" :placeholder="placeholder" :required="required">
-    <textarea class="form-field__input" :class="!error ? '' : 'form-field__input-error'" v-if="type == 'textareaType'" @input="$emit('input', $event.target.value)"
-      :id="title" :placeholder="placeholder" rows="6"></textarea>
+    <input class="form-field__input" :class="!error ? '' : 'form-field__input-error'" v-if="type == 'inputType'" type="text"
+      v-on="inputListeners" :value="value" :id="title" :placeholder="placeholder"
+      :required="required">
+    <textarea class="form-field__input" :class="!error ? '' : 'form-field__input-error'" v-if="type == 'textareaType'"
+      v-on="inputListeners" :id="title" :placeholder="placeholder" rows="6"></textarea>
 
     <!-- Бейдж ошибки -->
     <span class="form-field__message_error" :style="{ visibility: error ? 'visible' : 'hidden' }">{{ error ? error :
@@ -22,6 +23,7 @@
 export default {
   props: {
     title: String,
+    value: [Number, String],
     placeholder: String,
     required: {
       type: Boolean,
@@ -32,6 +34,17 @@ export default {
       default: "inputType"
     },
     error: String
+  },
+  computed: {
+    inputListeners: function () {
+      var vm = this;
+
+      return Object.assign({}, this.$listeners, {
+        input: function (event) {
+          vm.$emit('input', event.target.value)
+        }
+      })
+    }
   }
 }
 </script>
@@ -66,25 +79,26 @@ export default {
     border-radius: 4px;
     appearance: none;
 
-      &::placeholder { 
-        color: $mute-color;
-      }
+    &::placeholder {
+      color: $mute-color;
+    }
 
     &-error {
-      color: $secondary-color !important;;
-      border-color: $secondary-color !important;
+      color: $secondary-color  !important;
+      ;
+      border-color: $secondary-color  !important;
     }
 
     &:hover {
       border: 1px solid rgba(0, 0, 0, 0.1);
 
-      
+
     }
 
     &:focus {
       border: 1px solid rgba(0, 0, 0, 0.2);
 
-      &::placeholder { 
+      &::placeholder {
         color: inherit;
       }
     }

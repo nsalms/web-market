@@ -15,7 +15,7 @@
       :error="errs.imgUrl"></FormField>
 
     <!-- Цена товара -->
-    <FormField v-model="price" title="Цена товара" placeholder="Введите цену" required :error="errs.price"></FormField>
+    <FormField v-model="modelPrice" title="Цена товара" placeholder="Введите цену" required :error="errs.price"></FormField>
 
     <!-- Кнопка: Добавить -->
     <input type="submit" class="creation-form__submit" value="Добавить товар"
@@ -35,11 +35,22 @@ export default {
       description: "",
       imgUrl: "",
       price: "",
-      errs: []
+      errs: [],
     }
   },
   methods: {
     ...mapMutations('main', ['addNewProduct']),
+  },
+  computed: {
+    modelPrice: {
+      get() {
+        return this.price.toLocaleString()
+      },
+      set(value) {
+        this.price = +value.replace(/[^\d]/g, "")
+        this.$emit('input', this.price)
+      },
+    },
   },
   watch: {
     // Валидация полей
@@ -57,9 +68,6 @@ export default {
       this.errs['price'] = '';
       if (value === "")
         this.errs['price'] = 'Поле является обязательным';
-      else if (/^\d+$/.test(value) == false) {
-        this.errs['price'] = 'Допускаются только цифры 0-9';
-      };
     },
   }
 }
