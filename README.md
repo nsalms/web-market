@@ -3,6 +3,8 @@
 ![node](https://img.shields.io/badge/Node-v16.16.0-brightgreen?style=for-the-badge)
 ![node](https://img.shields.io/badge/Nuxt-v2.15.8-green?style=for-the-badge)
 
+[>> Ссылка на deploy](https://nsalms.github.io/web-market/)
+
 ## :white_check_mark: Запуск проекта для разработки
 
 ```bash
