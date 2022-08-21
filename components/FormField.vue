@@ -64,6 +64,7 @@ export default {
     outline: none;
     box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
     border-radius: 4px;
+    appearance: none;
 
       &::placeholder { 
         color: $mute-color;
